@@ -1,0 +1,12 @@
+<h1>
+  {{song.title}}
+</h1>
+<div>
+    <audio controls autoplay >
+        <source [src]="song.url" type="audio/mpeg">
+      Your browser does not support the audio element.
+      </audio>
+</div>
+<div class="col-md-11">
+    {{song.desc}}
+</div>

@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation';
 
 
 import { AppComponent } from './app.component';
@@ -12,10 +14,14 @@ import { AboutComponent } from './about/about.component';
 import { DownloadsComponent } from './downloads/downloads.component';
 import { ContactComponent } from './contact/contact.component';
 import { RingtonesComponent } from './ringtones/ringtones.component';
-import { AllsongsComponent } from './allsongs/allsongs.component';
 import { SongsbygenreComponent } from './songsbygenre/songsbygenre.component';
 import { SongsbyalphabetComponent } from './songsbyalphabet/songsbyalphabet.component';
 import { FooterComponent } from './footer/footer.component';
+import { ContactService } from './contact.service';
+import { SongsService } from './songs.service';
+import { SongService } from './song.service';
+import { SongComponent } from './song/song.component';
+import { TrimPipe } from './trim.pipe';
 
 
 @NgModule({
@@ -28,13 +34,16 @@ import { FooterComponent } from './footer/footer.component';
     DownloadsComponent,
     ContactComponent,
     RingtonesComponent,
-    AllsongsComponent,
     SongsbygenreComponent,
     SongsbyalphabetComponent,
-    FooterComponent
+    FooterComponent,
+    SongComponent,
+    TrimPipe
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    CustomFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'about', component: AboutComponent },
@@ -42,12 +51,17 @@ import { FooterComponent } from './footer/footer.component';
       { path: 'downloads', component: DownloadsComponent },
       { path: 'ringtones', component: RingtonesComponent },
       { path: 'songs/all', component: SongsComponent },
+      { path: 'song/:id/:title', component: SongComponent },
       { path: 'songs/genre', component: SongsbygenreComponent },
       { path: 'songs/alphabetical', component: SongsbyalphabetComponent }
     ]),
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    ContactService,
+    SongsService,
+    SongService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

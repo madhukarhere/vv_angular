@@ -1,3 +1,4 @@
+import { SongsService } from './../songs.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SongsComponent implements OnInit {
 
-  constructor() { }
+  songs;
+
+  constructor(private songsService: SongsService) {
+    this.songs = songsService.getSongs();
+  }
 
   ngOnInit() {
   }
