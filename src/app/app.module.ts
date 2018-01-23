@@ -1,9 +1,14 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatInputModule, MatButtonModule, MatCheckboxModule, MatSelectModule, MatCheckbox } from '@angular/material';
+import {Component} from '@angular/core';
 
 
 import { AppComponent } from './app.component';
@@ -23,6 +28,24 @@ import { SongService } from './song.service';
 import { SongComponent } from './song/song.component';
 import { TrimPipe } from './trim.pipe';
 
+const routes = [
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'downloads', component: DownloadsComponent },
+  { path: 'ringtones', component: RingtonesComponent },
+  { path: 'songs/all', component: SongsComponent },
+  { path: 'song/:id/:title', component: SongComponent },
+  { path: 'songs/genre', component: SongsbygenreComponent },
+  { path: 'songs/alphabetical', component: SongsbyalphabetComponent }
+];
+
+const mtComponents = [
+  MatInputModule,
+  MatSelectModule,
+  MatCheckboxModule,
+  MatButtonModule
+];
 
 @NgModule({
   declarations: [
@@ -42,20 +65,12 @@ import { TrimPipe } from './trim.pipe';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     CustomFormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent },
-      { path: 'about', component: AboutComponent },
-      { path: 'contact', component: ContactComponent },
-      { path: 'downloads', component: DownloadsComponent },
-      { path: 'ringtones', component: RingtonesComponent },
-      { path: 'songs/all', component: SongsComponent },
-      { path: 'song/:id/:title', component: SongComponent },
-      { path: 'songs/genre', component: SongsbygenreComponent },
-      { path: 'songs/alphabetical', component: SongsbyalphabetComponent }
-    ]),
-    NgbModule.forRoot()
+    RouterModule.forRoot(routes),
+    NgbModule.forRoot(),
+    mtComponents
   ],
   providers: [
     ContactService,

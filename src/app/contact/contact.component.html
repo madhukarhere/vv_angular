@@ -4,38 +4,46 @@
     <!-- <form #f="ngForm" (ngSubmit)="save(f.value)" > -->
     <form #f="ngForm" (ngSubmit)="onSubmit(f)" >
         <div class="form-group">
-          <label for="name">Name</label>
-          <input #name="ngModel" ngModel name="name" id="name" type="text" class="form-control" required>
-          <div class="alert alert-danger" *ngIf='name.touched && name.invalid'> Name is required. </div>
+          <mat-form-field >
+            <input placeholder="Name" matInput #name="ngModel" ngModel name="name" id="name" type="text"  required>
+            <mat-error *ngIf='name.touched && name.invalid'> Name is required. </mat-error>
+          </mat-form-field>          
+        </div>
+
+        <div class="form-group">
+          <mat-form-field >
+            <input placeholder="Email" matInput #email="ngModel" ngModel name="email" id="email" type="text"  required email>
+            <mat-error *ngIf='email.touched && email.invalid'>
+              <mat-error *ngIf="email.errors.required">
+                  Email is required.
+              </mat-error>
+              <mat-error *ngIf="!email.errors.required && email.errors.email">
+                  Email is Invalid.
+              </mat-error>
+            </mat-error>
+          </mat-form-field>          
+        </div>
+
+        <div class="form-group">  
+          <mat-form-field >
+            <mat-select placeholder="Subject" #subject="ngModel" ngModel name="subject" id="subject" type="text"  required>
+              <mat-option *ngFor="let subject of subjectTypes" [value]="subject.subject_id">
+                {{ subject.subject_type }}
+              </mat-option>
+            </mat-select>
+          
+            <mat-error *ngIf='subject.touched && subject.invalid'> Subject is required. </mat-error>
+          </mat-form-field>
+
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
-          <input #email="ngModel" ngModel name="email" id="email" type="text" class="form-control" required email>
-          <div class="alert alert-danger" *ngIf='email.touched && email.invalid'>
-            <div *ngIf="email.errors.required">
-                Email is required.
-            </div>
-            <div *ngIf="!email.errors.required && email.errors.email">
-                Email is Invalid.
-            </div>
-          </div>
+          <mat-form-field >
+            <textarea  placeholder="Message" matInput #message="ngModel"  ngModel name="message" id="message" type="text"  required>
+            </textarea>
+            <mat-error *ngIf='message.touched && message.invalid'> Message is required. </mat-error>
+        </mat-form-field>
         </div>
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <select #subject="ngModel" ngModel name="subject" id="subject" type="text" class="form-control" required>
-            <option *ngFor="let subject of subjectTypes" [value]="subject.subject_id">
-              {{ subject.subject_type }}
-            </option>
-          </select>
-          <div class="alert alert-danger" *ngIf='subject.touched && subject.invalid'> Subject is required. </div>
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea  #message="ngModel"  ngModel name="message" id="message" type="text" class="form-control" required>
-          </textarea>
-          <div class="alert alert-danger" *ngIf='message.touched && message.invalid'> Message is required. </div>
-        </div>
-        <button type="submit" class="btn btn-primary" [disabled]='f.invalid' > Submit</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]='f.invalid' > Submit</button>
       </form>
   </div>
   <div class="col-md-6">
