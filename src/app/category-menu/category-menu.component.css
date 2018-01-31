@@ -1,0 +1,11 @@
+.category_menu {
+    /* margin-top:20px; */
+}
+
+@media screen and (min-width: 0px) and (max-width: 400px) {
+    #catmenu { display: none; }  /* show it on small screens */
+}
+  
+@media screen and (min-width: 401px) and (max-width: 1024px) {
+    #catmenu { display: block; }   /* hide it elsewhere */
+}

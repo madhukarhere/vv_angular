@@ -1,32 +1,22 @@
-<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light mat-elevation-z4 app-navbar">
+<nav ngbDropdown class="navbar container navbar-expand-md navbar-light fixed-top bg-light mat-elevation-z4 app-navbar">
   <div class="container">
-    <a class="navbar-brand " routerLink="/">Vijayavipanchi</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-      aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand " routerLink="/">
+      <!-- <img height="45px" src="http://www.vijayavipanchi.org/Images/VijayavipanchiLogo.gif" alt='Vijayavipanchi'
+         class="responsive"> -->
+      VV
+    </a>
+    <a ngbDropdownToggle class="btn btn-navbar navbar-toggler" data-toggle="collapse" data-target=".nav-collapse">
       <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link mat-button"  routerLink="/downloads">Downloads</a>
-        </li>
-        <li ngbDropdown class="nav-item dropdown">
-          <a ngbDropdownToggle class="nav-link mat-button dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Songs</a>
-          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" routerLink="/songs/all">All </a>
-            <a class="dropdown-item" routerLink="/songs/genre">By Genre </a>
-            <a class="dropdown-item" routerLink="/songs/alphabetical">By Alphabetical</a>
-          </div>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link mat-button" routerLink="/about">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mat-button" routerLink="/contact">Contact Us</a>
-        </li>
-      </ul>
+    </a>
 
+    <div ngbDropdownMenu style="padding:10px;">
+      <menu-links></menu-links>
     </div>
+
+    <div class="collapse navbar-collapse " id="navbarCollapse">
+      <menu-links class="ml-auto"></menu-links>
+    </div>
+
   </div>
 
 </nav>

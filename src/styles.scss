@@ -1,5 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css?family=Mallanna|Tenali+Ramakrishna');
 
-body { padding-top: 80px; }
+$body-background-color: #723c00;
+$white: #ffffff;
+$primary: #990000;
+$primary-background: #FFFBD6;
+
+body { 
+    padding-top: 80px; 
+    background-color: $body-background-color; 
+}
+
+main.container {
+    background-color: $white;    
+    margin-top: -20px;     
+    padding-top: 15px; 
+    min-height: calc(100vh - 125px);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: $primary;
+}
+
+a {
+    color: $primary;
+}
+
+a:hover {
+    color: $primary;
+}
+.list-group-item.active {
+    background-color: $primary;
+    border-color: $primary;
+    a {
+        color: $white;
+    }
+    
+    a:hover {
+        color: $white;
+    }
+}
+
+.blank-10 {
+    height:10px;
+}
+
+.card {
+    border-color: $primary;
+    .card-header {
+        background: $primary;
+        color: $white;        
+        
+    }
+    .card-title {
+        padding-top: 3px;
+    }
+    .card-img-top {
+        padding: 3px;
+    }
+    
+    a {
+        color: $white;
+    }
+}

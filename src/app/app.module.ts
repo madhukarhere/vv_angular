@@ -1,4 +1,6 @@
 
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -7,10 +9,9 @@ import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 import { MatInputModule, MatButtonModule, MatCheckboxModule, MatSelectModule, MatCheckbox } from '@angular/material';
 import {Component} from '@angular/core';
-
-
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -22,11 +23,15 @@ import { RingtonesComponent } from './ringtones/ringtones.component';
 import { SongsbygenreComponent } from './songsbygenre/songsbygenre.component';
 import { SongsbyalphabetComponent } from './songsbyalphabet/songsbyalphabet.component';
 import { FooterComponent } from './footer/footer.component';
+import { SongComponent } from './song/song.component';
+import { TrimPipe } from './trim.pipe';
+import { MenuLinksComponent } from './menu-links/menu-links.component';
+import { CategoryMenuComponent } from './category-menu/category-menu.component';
+
 import { ContactService } from './contact.service';
 import { SongsService } from './songs.service';
 import { SongService } from './song.service';
-import { SongComponent } from './song/song.component';
-import { TrimPipe } from './trim.pipe';
+import { CategoryService } from './category.service';
 
 const routes = [
   { path: '', component: HomeComponent },
@@ -34,10 +39,10 @@ const routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'downloads', component: DownloadsComponent },
   { path: 'ringtones', component: RingtonesComponent },
+  { path: 'songs/genre/:id/:title', component: SongsComponent },
   { path: 'songs/all', component: SongsComponent },
-  { path: 'song/:id/:title', component: SongComponent },
-  { path: 'songs/genre', component: SongsbygenreComponent },
-  { path: 'songs/alphabetical', component: SongsbyalphabetComponent }
+  { path: 'songs/alphabetical', component: SongsbyalphabetComponent },
+  { path: 'song/:id/:title', component: SongComponent }
 ];
 
 const mtComponents = [
@@ -61,7 +66,9 @@ const mtComponents = [
     SongsbyalphabetComponent,
     FooterComponent,
     SongComponent,
-    TrimPipe
+    TrimPipe,
+    MenuLinksComponent,
+    CategoryMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -70,12 +77,14 @@ const mtComponents = [
     CustomFormsModule,
     RouterModule.forRoot(routes),
     NgbModule.forRoot(),
-    mtComponents
+    mtComponents,
+    CarouselModule.forRoot()
   ],
   providers: [
     ContactService,
     SongsService,
-    SongService
+    SongService,
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })

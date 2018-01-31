@@ -1,12 +1,49 @@
-<h1>
-  {{song.title}}
-</h1>
-<div>
-    <audio controls autoplay >
-        <source [src]="song.url" type="audio/mpeg">
-      Your browser does not support the audio element.
-      </audio>
+
+<div class="card 1-100 mat-elevation-z2">
+    <div class="card-body">
+        <h5 class="card-title display-4">{{song.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+            <div> 
+                <ul class="list-inline">
+                    <li class="list-inline-item font-weight-bold">Size: 
+                        <span class="font-weight-light"> {{song.size}} </span> 
+                    </li>
+                    <li class="list-inline-item font-weight-bold">Downloads: 
+                        <span class="font-weight-light"> {{song.downloads}} </span> 
+                    </li>
+                    <li class="list-inline-item font-weight-bold">Hits: 
+                        <span class="font-weight-light"> {{ song.hits }} </span>
+                    </li>
+                </ul>
+            </div>
+        </h6>
+        <h6 class="card-title mb-2 text-muted">
+            <div>
+                <ul class="list-inline">
+                    <li class="list-inline-item font-weight-bold">Author:
+                        <span class="font-weight-light"> {{ song.author }} </span>
+                    </li>
+                    <li class="list-inline-item font-weight-bold">Genre:
+                        <span class="font-weight-light"> {{ song.genre }} </span>
+                    </li>
+                </ul>
+            </div>
+        </h6>
+        <hr>
+        <div class="card-title"> <audio controls >
+            <source [src]="song.url" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+    
 </div>
-<div class="col-md-11">
-    {{song.desc}}
+<div class="gap-5p"></div>
+<div class="card mat-elevation-z2 ">
+    <div class="card-body">
+        <h5 class="card-title">Lyrics</h5>
+        <p class="card-text song"> {{song.desc}}</p>
+    </div>
 </div>
+
+<br>

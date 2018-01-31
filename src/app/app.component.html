@@ -1,5 +1,13 @@
 <bs-navbar></bs-navbar>
 <main role="main" class="container">
-  <router-outlet></router-outlet>
+  <div class="row">
+      <div class="col-md-3">
+          <category-menu></category-menu>
+      </div>
+      <div class="col-md-9">
+          <router-outlet></router-outlet>
+      </div>
+  </div>
+  
 </main>
-<!-- <bs-footer></bs-footer> -->
+<bs-footer></bs-footer>

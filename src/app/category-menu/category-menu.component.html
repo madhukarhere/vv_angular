@@ -1,0 +1,15 @@
+<div id="catmenu" class="category_menu sticky-top" >
+  <ul class="list-group">
+    <li class="list-group-item active"> 
+      <a routerLink="/songs/all" >
+        Genre (All)
+      </a>
+    </li>
+    <li class="list-group-item" [class.active]="cate" *ngFor="let cat of categories" value="cat.category_id">
+      <a [routerLink]="['/songs/genre/',cat.category_id,cat.category_name | trim]" >
+        {{ cat.category_name }}
+      </a>
+    </li>
+  </ul>
+</div>
+

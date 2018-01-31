@@ -1,15 +1,15 @@
-<div *ngFor="let song of songs" style="padding:10px;">
-  <h1>
-    {{song.title}}
-  </h1>
-  <div class="col-md-11">
-      {{song.desc}}
-  </div>
-  <div class="col-md-1 float-right">
-      <a class="" [routerLink]="['/song/',song.id,song.title | trim]"  class="btn btn-primary">
-        Select song
+<div *ngFor="let song of songs" style="padding:2px;">
+  <div class="card">
+    <div class="card-header">
+      <a class="" [routerLink]="['/song/',song.id,song.title | trim]" >
+        {{song.title}}
       </a>
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{song.desc}}</p>
+    </div>
+    <!-- <div class="card-footer text-muted">
+      
+    </div> -->
   </div>
-  
-
 </div>
